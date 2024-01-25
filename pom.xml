@@ -67,6 +67,31 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.12-SNAPSHOT</version>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>prepare-agent</goal>
+                  </goals>
+               </execution>
+               <execution>
+                  <id>jacoco-report</id>
+                  <phase>test</phase>
+                  <goals>
+                     <goal>report</goal>
+                  </goals>
+                  <!-- default target/jacoco/site/* -->
+                  <configuration>
+                     <outputDirectory>target/jacoco-report</outputDirectory>
+                     <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
     </plugins>
   </build>
 </project>
